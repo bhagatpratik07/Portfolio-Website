@@ -1,0 +1,117 @@
+.projects-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+.projects-heading {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.project-grid {
+  display: flex;
+  flex-direction: column; /* Display projects vertically */
+  gap: 40px; /* Increased gap between projects */
+  align-items: center; /* Center project cards horizontally */
+}
+
+.project-card {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: flex-start; /* Adjust alignment of project details */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 40px; /* Increased margin between projects */
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  overflow: hidden;
+  width: 800px; /* Set the width of the project card */
+  max-width: 100%; /* Adjust maximum width for responsiveness */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+  width: 400px; /* Adjust the width of the image */
+  height: 400px; /* Increase the height of the image */
+  object-fit: cover;
+  border-top-left-radius: 8px; /* Adjust border radius */
+  border-bottom-left-radius: 8px;
+  margin-right: 40px; /* Increased margin between image and details */
+}
+
+.project-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align project details to the top */
+  max-width: 500px; /* Set maximum width for the project details */
+}
+
+.project-info h2 {
+  font-size: 32px; /* Increase the font size for the project title */
+  font-weight: bold;
+  margin-bottom: 10px;
+  overflow-wrap: break-word; /* Replace deprecated word-wrap property */
+}
+
+.project-description {
+  font-size: 20px; /* Increase the font size for the project description */
+  line-height: 1.5;
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Allow text to break within the limited width */
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.project-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.project-links a svg {
+  margin-right: 5px;
+  font-size: 30px;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    width: 100%; /* Reset the width for smaller screens */
+    flex-direction: column;
+  }
+
+  .project-image {
+    width: 100%;
+    height: auto; /* Reset the height for smaller screens */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    margin-right: 0;
+    margin-bottom: 20px; /* Adjust margin for smaller screens */
+  }
+
+  .project-info {
+    max-width: none;
+  }
+
+  .project-info h2 {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  .project-description {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}
