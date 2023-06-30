@@ -23,7 +23,7 @@ function Contact() {
           required
         />
         <ValidationError
-          prefix={<span className="error-prefix">Email</span>}
+          // prefix={<span className="error-prefix">Email</span>}
           field="email"
           errors={state.errors}
         />
@@ -35,7 +35,7 @@ function Contact() {
           required
         ></textarea>
         <ValidationError
-          prefix={<span className="error-prefix">Message</span>}
+          // prefix={<span className="error-prefix">Message</span>}
           field="message"
           errors={state.errors}
         />

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./Projects.css";
 import { useState, useEffect } from "react";
 import { FiGithub, FiExternalLink } from "react-icons/fi"; // Import the FiExternalLink icon
 import useContentful from "../../context/useContentful";
 import {
-  CButton,
   CCard,
   CCardBody,
   CCardImage,
@@ -14,14 +15,14 @@ import {
 } from "@coreui/react";
 import hackathonImage from "../../assets/hackathon_win.jpg";
 
-export default function Projects() {
+function Projects() {
   const { getProjects } = useContentful();
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getProjects().then((response) => {
-      setProjects(response?.items);
+      setProjects(response?.items!);
       console.log(projects);
       setLoading(false);
     });
@@ -35,7 +36,7 @@ export default function Projects() {
       ) : (
         <CRow>
           {projects.map((project) => (
-            <CCol md="4" key={project.sys.id}>
+            <CCol md="4" key={project?.sys?.id}>
               <CCard className="project-card">
                 <CCardImage
                   src={project.fields.image.fields.file.url || hackathonImage}
@@ -75,6 +76,7 @@ export default function Projects() {
     </div>
   );
 }
+export default Projects;
 
 /* 
 image = project?.fields?.image?.fields?.file?.url
