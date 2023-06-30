@@ -1,30 +1,54 @@
+import { useForm, ValidationError } from "@formspree/react";
 import "./Contact.css";
 
-export default function Contact() {
+function Contact() {
+  const [state, handleSubmit] = useForm("xdorndyw");
+  if (state.succeeded) {
+    return (
+      <p className="success-message">
+        Thank you for sending a message! I will get back to you soon :)
+      </p>
+    );
+  }
   return (
-    <section id="contact" className="contact-section">
-      <h2>Contact</h2>
-      <div className="contact-info">
-        <div className="contact-item">
-          <h3>Email</h3>
-          <p>contact@example.com</p>
-        </div>
-        <div className="contact-item">
-          <h3>Phone</h3>
-          <p>+1234567890</p>
-        </div>
-        <div className="contact-item">
-          <h3>Address</h3>
-          <p>123 Main Street, City, Country</p>
-        </div>
-      </div>
-      <form className="contact-form">
-        <h3>Send a Message</h3>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
+    <div className="contact-section" id="contact">
+      <h1 className="contact-heading">Send me a Message!</h1>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <input
+          className="input-field"
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+        <ValidationError
+          prefix={<span className="error-prefix">Email</span>}
+          field="email"
+          errors={state.errors}
+        />
+        <textarea
+          className="input-field"
+          id="message"
+          name="message"
+          placeholder="Message"
+          required
+        ></textarea>
+        <ValidationError
+          prefix={<span className="error-prefix">Message</span>}
+          field="message"
+          errors={state.errors}
+        />
+        <button
+          className="submit-button"
+          type="submit"
+          disabled={state.submitting}
+        >
+          Submit
+        </button>
       </form>
-    </section>
+    </div>
   );
 }
+
+export default Contact;

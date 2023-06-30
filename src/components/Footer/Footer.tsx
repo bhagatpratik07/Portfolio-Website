@@ -1,5 +1,9 @@
 import "./Footer.css";
 
 export default function Footer() {
-  return <div>Footer</div>;
+  return (
+    <footer className="footer">
+      <div className="footer-made-by">Made with ❤️ by Pratik</div>
+    </footer>
+  );
 }

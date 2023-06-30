@@ -1,117 +1,128 @@
 .projects-container {
-  text-align: center;
-  cursor: pointer;
+  padding: 20px;
 }
 
 .projects-heading {
-  font-size: 48px;
+  font-size: 60px;
   font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.project-grid {
-  display: flex;
-  flex-direction: column; /* Display projects vertically */
-  gap: 40px; /* Increased gap between projects */
-  align-items: center; /* Center project cards horizontally */
 }
 
 .project-card {
-  text-decoration: none;
-  color: #000;
   display: flex;
-  align-items: flex-start; /* Adjust alignment of project details */
-  padding: 20px;
+  height: 400px;
+  background-color: #0d1117;
+  color: #c9d1d9;
   border-radius: 8px;
-  margin-bottom: 40px; /* Increased margin between projects */
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   overflow: hidden;
-  width: 800px; /* Set the width of the project card */
-  max-width: 100%; /* Adjust maximum width for responsiveness */
+  cursor: pointer;
+  transition: transform 0.3s;
+  padding: 80px;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
 }
 
-.project-image {
-  width: 400px; /* Adjust the width of the image */
-  height: 400px; /* Increase the height of the image */
+.project-card .card-image {
+  flex: 0 0 80px;
+  width: 600px; /* Increase the width of the image */
+  height: 100%; /* Maintain the height of the image */
   object-fit: cover;
-  border-top-left-radius: 8px; /* Adjust border radius */
-  border-bottom-left-radius: 8px;
-  margin-right: 40px; /* Increased margin between image and details */
+  transition: transform 0.3s;
 }
 
-.project-info {
+.project-card:hover .card-image {
+  transform: scale(0.9);
+}
+
+.project-card .card-body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align project details to the top */
-  max-width: 500px; /* Set maximum width for the project details */
+  justify-content: space-between;
+  padding: 10px;
 }
 
-.project-info h2 {
-  font-size: 32px; /* Increase the font size for the project title */
-  font-weight: bold;
-  margin-bottom: 10px;
-  overflow-wrap: break-word; /* Replace deprecated word-wrap property */
-}
-
-.project-description {
-  font-size: 20px; /* Increase the font size for the project description */
-  line-height: 1.5;
-  margin-bottom: 10px;
-  word-wrap: break-word; /* Allow text to break within the limited width */
-}
-
-.project-links {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.project-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.project-links a svg {
-  margin-right: 5px;
+.project-card .card-title {
   font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  margin-left: 10px;
 }
 
-@media (max-width: 768px) {
+.project-card .card-text {
+  font-size: 14px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: unset; /* Remove line clamp to display full description */
+}
+
+.project-card .card-links {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.project-card .card-links a {
+  color: #c9d1d9;
+  margin-right: 8px;
+  font-size: 25px;
+}
+
+.card-image {
+  transition: transform 0.3s;
+}
+
+.card-image:hover {
+  transform: scale(0.9);
+}
+
+@media screen and (max-width: 768px) {
   .project-card {
-    width: 100%; /* Reset the width for smaller screens */
+    padding: 20px;
     flex-direction: column;
+    align-items: center;
+    height: auto; /* Set the height to auto to accommodate the text */
   }
 
-  .project-image {
-    width: 100%;
-    height: auto; /* Reset the height for smaller screens */
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 0;
-    margin-right: 0;
-    margin-bottom: 20px; /* Adjust margin for smaller screens */
+  .project-card .card-title {
+    font-size: 24px;
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adjust the margin for spacing */
   }
 
-  .project-info {
-    max-width: none;
+  .project-card .card-text {
+    font-size: 14px;
+    margin-left: 0;
+    margin-top: 10px; /* Adjust the margin for spacing */
+    margin-bottom: 20px; /* Adjust the margin for spacing */
+    text-align: center; /* Center align the text on smaller screens */
   }
 
-  .project-info h2 {
-    font-size: 24px; /* Adjust font size for smaller screens */
+  .project-card .card-links {
+    margin-top: 10px; /* Adjust the margin for spacing */
   }
 
-  .project-description {
-    font-size: 16px; /* Adjust font size for smaller screens */
+  .project-card .card-links a {
+    font-size: 20px;
+  }
+
+  .project-card .card-image {
+    display: block; /* Show the image on smaller screens */
+    flex: 0 0 auto; /* Reset the flex value for the image */
+    height: auto; /* Reset the height to auto */
+    width: 100%; /* Set the width to 100% to fit the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover .card-image {
+    transform: scale(0.9);
   }
 }

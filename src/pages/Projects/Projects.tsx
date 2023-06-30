@@ -2,6 +2,17 @@ import "./Projects.css";
 import { useState, useEffect } from "react";
 import { FiGithub, FiExternalLink } from "react-icons/fi"; // Import the FiExternalLink icon
 import useContentful from "../../context/useContentful";
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardImage,
+  CCardText,
+  CCardTitle,
+  CCol,
+  CRow,
+} from "@coreui/react";
+import hackathonImage from "../../assets/hackathon_win.jpg";
 
 export default function Projects() {
   const { getProjects } = useContentful();
@@ -10,7 +21,8 @@ export default function Projects() {
 
   useEffect(() => {
     getProjects().then((response) => {
-      setProjects(response?.items ?? []);
+      setProjects(response?.items);
+      console.log(projects);
       setLoading(false);
     });
   }, []);
@@ -21,40 +33,53 @@ export default function Projects() {
       {loading ? (
         <p>Loading projects...</p>
       ) : (
-        <div className="project-grid">
+        <CRow>
           {projects.map((project) => (
-            <div key={project?.sys?.id} className="project-card">
-              <img
-                src={project?.fields?.image?.fields?.file?.url}
-                alt={project?.fields?.image?.fields?.description}
-                className="project-image"
-              />
-              <div className="project-info">
-                <h2>{project?.fields?.name}</h2>
-                <p className="project-description">
-                  {project?.fields?.description}
-                </p>
-                <div className="project-links">
-                  <a
-                    href={project?.fields?.gitHub}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiGithub size={30} />
-                  </a>
-                  <a
-                    href={project?.fields?.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiExternalLink size={30} />{" "}
-                  </a>
-                </div>
-              </div>
-            </div>
+            <CCol md="4" key={project.sys.id}>
+              <CCard className="project-card">
+                <CCardImage
+                  src={project.fields.image.fields.file.url || hackathonImage}
+                  alt={project.fields.name}
+                  height="450px"
+                  width="800px"
+                  style={{
+                    borderRadius: "10px" /* Add border radius */,
+                  }}
+                  className="card-image"
+                />
+                <CCardBody>
+                  <CCardTitle>{project.fields.name}</CCardTitle>
+                  <CCardText>{project.fields.description}</CCardText>
+                  <div className="card-links">
+                    <a
+                      href={project?.fields?.gitHub}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FiGithub size={40} />
+                    </a>
+                    <a
+                      href={project?.fields?.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FiExternalLink size={40} />
+                    </a>
+                  </div>
+                </CCardBody>
+              </CCard>
+            </CCol>
           ))}
-        </div>
+        </CRow>
       )}
     </div>
   );
 }
+
+/* 
+image = project?.fields?.image?.fields?.file?.url
+heading = project?.fields?.name
+desc = project?.fields?.description
+github = project?.fields?.gitHub
+live = project?.fields?.liveLink
+*/

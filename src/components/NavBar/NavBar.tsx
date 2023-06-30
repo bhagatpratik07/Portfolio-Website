@@ -10,6 +10,14 @@ export default function NavBar() {
     setMenuOpen(!menuOpen);
   };
 
+  const handleResumeClick = () => {
+    handleMenuClick();
+    window.open(
+      "https://drive.google.com/file/d/15n371mDDRoqEMVNbwm-B4MSovjbcuLxY/view?usp=sharing",
+      "_blank"
+    );
+  };
+
   return (
     <nav className="navbar">
       <Link to="home" className="logo">
@@ -59,13 +67,12 @@ export default function NavBar() {
             Contact
           </Link>
         </li>
+        <li>
+          <button className="resume-button" onClick={handleResumeClick}>
+            Resume
+          </button>
+        </li>
       </ul>
-      <div className="button-group">
-        <button className="resume-button">Resume</button>
-        <div className="hamburger-menu" onClick={handleMenuClick}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </div>
-      </div>
     </nav>
   );
 }

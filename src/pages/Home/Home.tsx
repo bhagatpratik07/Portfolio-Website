@@ -13,6 +13,7 @@ export default function Home() {
           href="https://github.com/bhagatpratik07"
           target="_blank"
           rel="noopener noreferrer"
+          className="social-icon"
         >
           <FaGithub className="icon github" />
         </a>
@@ -20,6 +21,7 @@ export default function Home() {
           href="https://www.linkedin.com/in/pratik-bhagat07/"
           target="_blank"
           rel="noopener noreferrer"
+          className="social-icon"
         >
           <FaLinkedin className="icon linkedin" />
         </a>
@@ -27,6 +29,7 @@ export default function Home() {
           href="https://twitter.com/bhagatpratik07"
           target="_blank"
           rel="noopener noreferrer"
+          className="social-icon"
         >
           <FaTwitter className="icon twitter" />
         </a>

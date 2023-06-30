@@ -16,9 +16,11 @@
 }
 
 .about-image {
-  width: 700px; /* Adjust the width as needed */
-  height: 500px; /* Adjust the height as needed */
+  width: 500px; /* Adjust the width as needed */
+  height: 400px; /* Adjust the height as needed */
   overflow: hidden;
+
+  border-radius: 10px;
 }
 
 .about-image img {
@@ -28,18 +30,17 @@
 }
 
 .about-text h2 {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .about-text p {
-  font-size: 18px; /* Increase the font size as needed */
+  font-size: 17px; /* Increase the font size as needed */
   line-height: 1.6;
   text-align: justify;
 }
 
-/* Media Query for Responsive Layout */
 @media (min-width: 768px) {
   .about-content {
     flex-direction: row;
@@ -49,5 +50,15 @@
 
   .about-text {
     margin-right: 60px;
+  }
+
+  .about-image {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-image {
+    display: none;
   }
 }
