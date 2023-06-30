@@ -20,12 +20,28 @@ function Projects() {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   getProjects().then((response) => {
+  //     setProjects(response?.items!);
+  //     console.log(projects);
+  //     setLoading(false);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    getProjects().then((response) => {
-      setProjects(response?.items!);
-      console.log(projects);
-      setLoading(false);
-    });
+    const fetchData = async () => {
+      try {
+        const response = await getProjects();
+        setProjects(response?.items!);
+        console.log(projects);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
